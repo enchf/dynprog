@@ -1,0 +1,6 @@
+**/settings.json
+**/.DS_Store
+**/*.gem
+
+Gemfile.lock
+pkg
