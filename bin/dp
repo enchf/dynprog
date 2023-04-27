@@ -3,14 +3,15 @@
 
 require 'dynprog'
 
-display = DP::Display.new(20, 40)
-display.reset_position
+samples = [
+  %w[j4g posadev],
+  %w[XMJYAUZ MZJAWXU],
+  %w[ABCBDAB BDCABA]
+].each do |a, b|
+  lcs = DP::LongestCommonSubsequence.new(a, b)
 
-display.append(DP::VERSION)
-sleep(2)
+  lcs.solve
+  lcs.close
 
-display.position(4, 2)
-display.append("Dynamic Programming")
-sleep(2)
-
-display.close
+  sleep(2)
+end
