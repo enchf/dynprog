@@ -3,4 +3,14 @@
 
 require 'dynprog'
 
-puts DP::VERSION
+display = DP::Display.new(20, 40)
+display.reset_position
+
+display.append(DP::VERSION)
+sleep(2)
+
+display.position(4, 2)
+display.append("Dynamic Programming")
+sleep(2)
+
+display.close
