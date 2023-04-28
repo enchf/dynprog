@@ -7,6 +7,9 @@ module DP
     def initialize(height, width)
       Curses.init_screen
 
+      @height = height
+      @width = width
+
       @window = Curses::Window.new(height, width, 0, 0)
       @window.box('|', '-')
       
@@ -14,7 +17,7 @@ module DP
     end
 
     def reset_position
-      @window.setpos(2, 2)
+      position 2, 2
     end
 
     def position(x, y)
@@ -27,7 +30,15 @@ module DP
       @window.refresh
     end
 
+    def prompt
+      @window.getch
+    end
+
     def close
+      position(0, 0)
+      blank = (' ' * @width) + "\n"
+      (0...@height).each { @window << blank }
+      @window.refresh
       @window.close
     end
   end
